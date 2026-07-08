@@ -4,6 +4,8 @@
 package org.example;
 
 import org.junit.Test;
+import ticket.booking.App;
+
 import static org.junit.Assert.*;
 
 public class AppTest {
