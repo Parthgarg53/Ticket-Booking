@@ -3,10 +3,23 @@
  */
 package ticket.booking;
 
+import ticket.booking.services.UserBookingService;
+
+import java.util.Scanner;
+
 public class App {
 
 
     public static void main(String[] args) {
+        System.out.println("Running Train Booking System");
+        Scanner sc = new Scanner(System.in);
+        int option =0;
+        UserBookingService userBookingService = new UserBookingService();
+        try{
+            UserBookingService = new UserBookingService();
+        }
+        catch (){
 
+        }
     }
 }
