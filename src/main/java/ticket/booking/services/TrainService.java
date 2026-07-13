@@ -1,4 +1,16 @@
-package ticket.booking.services;
+package ticket.booking.service;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import ticket.booking.entities.Train;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class TrainService {
 
