@@ -3,8 +3,6 @@ package ticket.booking.services;
 import ticket.booking.entities.User;
 import ticket.booking.util.UserServiceUtil;
 
-package ticket.booking.service;
-
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

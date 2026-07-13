@@ -3,7 +3,10 @@
  */
 package ticket.booking;
 
+import ticket.booking.entities.Train;
+import ticket.booking.entities.User;
 import ticket.booking.services.UserBookingService;
+import ticket.booking.util.UserServiceUtil;
 
 import java.io.IOException;
 import java.util.List;
@@ -32,7 +35,7 @@ public class App {
             System.out.println("5. Book a Seat");
             System.out.println("6. Cancel my Booking");
             System.out.println("7. Exit the App");
-            option = scanner.nextInt();
+            option = Scanner.nextInt();
             Train trainSelectedForBooking = new Train();
             switch (option){
                 case 1:
@@ -45,9 +48,9 @@ public class App {
                     break;
                 case 2:
                     System.out.println("Enter the username to Login");
-                    String nameToLogin = scanner.next();
+                    String nameToLogin = Scanner.next();
                     System.out.println("Enter the password to signup");
-                    String passwordToLogin = scanner.next();
+                    String passwordToLogin = Scanner.next();
                     User userToLogin = new User(nameToLogin, passwordToLogin, UserServiceUtil.hashPassword(passwordToLogin), new ArrayList<>(), UUID.randomUUID().toString());
                     try{
                         userBookingService = new UserBookingService(userToLogin);
@@ -61,7 +64,7 @@ public class App {
                     break;
                 case 4:
                     System.out.println("Type your source station");
-                    String source = scanner.next();
+                    String source = Scanner.next();
                     System.out.println("Type your destination station");
                     String dest = scanner.next();
                     List<Train> trains = userBookingService.getTrains(source, dest);
