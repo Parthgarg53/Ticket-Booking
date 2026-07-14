@@ -1,4 +1,4 @@
-package ticket.booking.service;
+package ticket.booking.services;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
