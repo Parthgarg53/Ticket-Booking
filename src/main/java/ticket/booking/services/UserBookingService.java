@@ -52,13 +52,21 @@ public class UserBookingService{
         return foundUser.isPresent();
     }
 
-    public Boolean signUp(User user1){
-        try{
+    public Boolean signUp(User user1) {
+        boolean exists = userList.stream()
+                .anyMatch(u -> u.getName().equalsIgnoreCase(user1.getName()));
+
+        if (exists) {
+            System.out.println("Username already exists. Please login.");
+            return false;
+        }
+
+        try {
             userList.add(user1);
             saveUserListToFile();
-            return Boolean.TRUE;
-        }catch (IOException ex){
-            return Boolean.FALSE;
+            return true;
+        } catch (IOException e) {
+            return false;
         }
     }
 
@@ -68,6 +76,10 @@ public class UserBookingService{
     }
 
     public void fetchBookings(){
+        if (user == null) {
+            System.out.println("Please login first.");
+            return;
+        }
         Optional<User> userFetched = userList.stream().filter(user1 -> {
             return user1.getName().equals(user.getName()) && UserServiceUtil.checkPassword(user.getPassword(), user1.getHashedPassword());
         }).findFirst();
@@ -77,6 +89,10 @@ public class UserBookingService{
     }
 
     public Boolean cancelBooking(String ticketId){
+        if (user == null) {
+            System.out.println("Please login first.");
+            return false;
+        }
 
         Scanner s = new Scanner(System.in);
         System.out.println("Enter the ticket id to cancel");
@@ -115,6 +131,10 @@ public class UserBookingService{
     }
 
     public Boolean bookTrainSeat(Train train, int row, int seat) {
+        if (user == null) {
+            System.out.println("Please login first.");
+            return false;
+        }
         try{
             TrainService trainService = new TrainService();
             List<List<Integer>> seats = train.getSeats();
